@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}GraffGram{% endblock title %}
+
+{% block content %}
+    {% for posts in popular_post  %}
+    <div class="post-card">
+        <div class="post-card__header">
+            <div class="post-card__avatar">
+                <img src="" alt="Avatar" class="avatar__img">
+            </div>
+            <div class="post-card__user-info">
+                <span class="user-info__nickname">Ник пользователя</span>
+            </div>
+        </div>
+        <img src="{{posts.image.url}}" alt="Post Image" class="post-card__image">
+        <div class="post-card__description">
+            {{post.description}}.
+        </div>
+        <div class="post-card__comment-section">
+            <input type="text" class="comment-input" placeholder="Добавить комментарий...">
+            <button class="comment-button">Отправить</button>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock content %}
+

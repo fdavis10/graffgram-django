@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+    <header class="header">
+        <div class="wrapper">
+            <div class="header__wrapper">
+                <a href="/" class="header_logo">
+                    <span class="logo__img">LOGO</span>
+                </a>
+                <nav class="header__nav">
+                    <ul class="header__list">
+                        <li class="header__item">
+                            <a href="" class="header__link">Опубликовать</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="" class="header__link">Друзья</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="" class="header__link">Сообщения</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="" class="header__link">Поддержка</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="wrapper">
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,151 @@
+/* M PLUS 1p */
+
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+ul{
+    list-style-type:none;
+}
+
+body {
+    font-family: "M PLUS 1p", serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: rgba(255, 255, 255, 0.9); /* Полупрозрачный фон */
+}
+
+/* START NAVIGATION */
+
+.wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* Полупрозрачный фон */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+.header__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; /* Центрируем по вертикали */
+    justify-content: space-between;
+    padding: 15px 20px; /* Увеличиваем отступы */
+}
+
+.header__list {
+    display: flex;
+}
+
+.header__item {
+    margin-right: 40px; /* Уменьшаем отступы между элементами */
+}
+
+.header__item:last-child {
+    margin-right: 0;
+}
+
+.header__link {
+    font-size: 18px; /* Уменьшаем размер шрифта */
+    line-height: 24px;
+    color: black;
+    text-decoration: none;
+    padding: 10px 15px; /* Добавляем внутренние отступы */
+    border-radius: 5px; /* Скругляем углы */
+    transition: background-color .3s ease, color .3s ease; /* Плавный переход */
+}
+
+.header__link:hover,
+.header__link:focus,
+.header__link:active {
+    background-color: rgba(151, 151, 151, 0.2); /* Фон при наведении */
+    color: rgb(51, 51, 51); /* Цвет текста при наведении */
+}
+
+/* END NAVIGATION */
+
+/* START POSTS */
+
+.post-card {
+    width: 800px; /* Ширина карточки */
+    height: 800px; /* Высота карточки */
+    background-color: white; /* Фон карточки */
+    border-radius: 10px; /* Скругление углов карточки */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень для карточки */
+    margin: 20px auto; /* Центрируем карточку и добавляем отступы по вертикали */
+    overflow: hidden; /* Скрываем переполнение */
+    padding-top: 20px; /* Отступ сверху */
+}
+
+.post-card__header {
+    display: flex; /* Используем flexbox для размещения аватара и ника */
+    align-items: center; /* Центрируем по вертикали */
+    padding: 15px; /* Внутренние отступы */
+}
+
+.post-card__avatar {
+    margin-right: 10px; /* Отступ между аватаром и ником */
+}
+
+.avatar__img {
+    width: 50px; /* Ширина аватара */
+    height: 50px; /* Высота аватара */
+    border-radius: 50%; /* Круглая форма аватара */
+}
+
+.user-info__nickname {
+    font-size: 18px; /* Размер шрифта ника */
+    font-weight: bold; /* Жирный шрифт */
+}
+
+.post-card__image {
+    width: 100%; /* Ширина изображения на всю карточку */
+    height: auto; /* Автоматическая высота */
+}
+
+.post-card__description {
+    padding: 15px; /* Внутренние отступы для описания */
+    font-size: 16px; /* Размер шрифта описания */
+    color: #333; /* Цвет текста описания */
+}
+
+.post-card__comment-section {
+    display: flex; /* Используем flexbox для размещения поля ввода и кнопки */
+    padding: 15px; /* Внутренние отступы секции комментариев */
+}
+
+.comment-input {
+    flex-grow: 1; /* Поле ввода занимает оставшееся пространство */
+    padding: 10px; /* Внутренние отступы поля ввода */
+    border: 1px solid #ccc; /* Граница поля ввода */
+    border-radius: 5px; /* Скругление углов поля ввода */
+}
+
+.comment-button {
+    padding: 10px 15px; /* Внутренние отступы кнопки */
+    margin-left: 10px; /* Отступ между полем ввода и кнопкой */
+    background-color: #007bff; /* Цвет фона кнопки */
+    color: white; /* Цвет текста кнопки */
+    border: none; /* Без границы */
+    border-radius: 5px; /* Скругление углов кнопки */
+    cursor: pointer; /* Указатель при наведении */
+    transition: background-color .3s ease; /* Плавный переход цвета фона при наведении */
+}
+
+.comment-button:hover {
+    background-color: #0056b3; /* Цвет фона кнопки при наведении */
+}
+
+/* END POSTS  */
