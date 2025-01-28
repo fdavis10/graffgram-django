@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock extra_css %}
     <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>
@@ -26,7 +28,7 @@
                             <a href="" class="header__link">Сообщения</a>
                         </li>
                         <li class="header__item">
-                            <a href="" class="header__link">Поддержка</a>
+                            <a href="" class="header__link">Войти</a>
                         </li>
                     </ul>
                 </nav>

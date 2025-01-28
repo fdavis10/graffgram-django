@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/post_detail.css' %}">
+{% endblock extra_css %}
+{% block title %}Post Detail{% endblock title %}
+
+{% block content %}
+<div class="post-detail-container">
+    <div class="post-detail-image">
+        <img src="{{ post.image.url }}" alt="Post Image">
+    </div>
+    <div class="post-detail-info">
+        <div class="user-info">
+            <img src="{{ post.author.profile_image.url }}" alt="User Avatar" class="avatar">
+            <span class="username">{{ post.author.username }}</span>
+        </div>
+        <div class="post-description">
+            <p>{{ post.description }}</p>
+        </div>
+        <div class="comments-section">
+            <h3>Комментарии</h3>
+            <ul class="comment-list">
+                {% for comment in post.comments.all %}
+                <li>
+                    <strong>{{ comment.author.username }}</strong>: {{ comment.content }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock content %}

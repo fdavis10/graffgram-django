@@ -18,7 +18,7 @@ body {
     font-family: "M PLUS 1p", serif;
     font-weight: 400;
     font-style: normal;
-    background-color: rgba(255, 255, 255, 0.9); /* Полупрозрачный фон */
+    background-color: rgba(255, 255, 255, 0.9); 
 }
 
 /* START NAVIGATION */
@@ -33,16 +33,16 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.9); /* Полупрозрачный фон */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень */
+    background-color: rgb(255, 255, 255); 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
 }
 
 .header__wrapper {
     display: flex;
     flex-wrap: wrap;
-    align-items: center; /* Центрируем по вертикали */
+    align-items: center; 
     justify-content: space-between;
-    padding: 15px 20px; /* Увеличиваем отступы */
+    padding: 15px 20px; 
 }
 
 .header__list {
@@ -50,7 +50,7 @@ body {
 }
 
 .header__item {
-    margin-right: 40px; /* Уменьшаем отступы между элементами */
+    margin-right: 40px; 
 }
 
 .header__item:last-child {
@@ -58,94 +58,225 @@ body {
 }
 
 .header__link {
-    font-size: 18px; /* Уменьшаем размер шрифта */
+    font-size: 18px; 
     line-height: 24px;
     color: black;
     text-decoration: none;
-    padding: 10px 15px; /* Добавляем внутренние отступы */
-    border-radius: 5px; /* Скругляем углы */
-    transition: background-color .3s ease, color .3s ease; /* Плавный переход */
+    padding: 10px 15px; 
+    border-radius: 5px; 
+    transition: background-color .3s ease, color .3s ease; 
 }
 
 .header__link:hover,
 .header__link:focus,
 .header__link:active {
-    background-color: rgba(151, 151, 151, 0.2); /* Фон при наведении */
-    color: rgb(51, 51, 51); /* Цвет текста при наведении */
+    background-color: rgba(151, 151, 151, 0.2); 
+    color: rgb(51, 51, 51); 
 }
 
 /* END NAVIGATION */
 
 /* START POSTS */
-
-.post-card {
-    width: 800px; /* Ширина карточки */
-    height: 800px; /* Высота карточки */
-    background-color: white; /* Фон карточки */
-    border-radius: 10px; /* Скругление углов карточки */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень для карточки */
-    margin: 20px auto; /* Центрируем карточку и добавляем отступы по вертикали */
-    overflow: hidden; /* Скрываем переполнение */
-    padding-top: 20px; /* Отступ сверху */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 150px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .container {
+    max-width: 1000px;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .post-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 500px; 
+  }
+  
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eaeaea;
+}
+  
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+  
+.username {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+  
+.post-image {
+    flex: 1 1 auto;
+    display: flex;
+    height: 250px; 
+}
+  
+.post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+  
+.post-footer {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+  
+.stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px; 
+    color: #666; 
+    align-items: center; 
 }
 
-.post-card__header {
-    display: flex; /* Используем flexbox для размещения аватара и ника */
-    align-items: center; /* Центрируем по вертикали */
-    padding: 15px; /* Внутренние отступы */
+.stats span {
+    display: flex;
+    align-items: center; 
+    gap: 4px; 
 }
 
-.post-card__avatar {
-    margin-right: 10px; /* Отступ между аватаром и ником */
+.stats img {
+    height: 1em; 
+    width: 1em; 
 }
 
-.avatar__img {
-    width: 50px; /* Ширина аватара */
-    height: 50px; /* Высота аватара */
-    border-radius: 50%; /* Круглая форма аватара */
-}
-
-.user-info__nickname {
-    font-size: 18px; /* Размер шрифта ника */
-    font-weight: bold; /* Жирный шрифт */
-}
-
-.post-card__image {
-    width: 100%; /* Ширина изображения на всю карточку */
-    height: auto; /* Автоматическая высота */
-}
-
-.post-card__description {
-    padding: 15px; /* Внутренние отступы для описания */
-    font-size: 16px; /* Размер шрифта описания */
-    color: #333; /* Цвет текста описания */
-}
-
-.post-card__comment-section {
-    display: flex; /* Используем flexbox для размещения поля ввода и кнопки */
-    padding: 15px; /* Внутренние отступы секции комментариев */
-}
-
+  
 .comment-input {
-    flex-grow: 1; /* Поле ввода занимает оставшееся пространство */
-    padding: 10px; /* Внутренние отступы поля ввода */
-    border: 1px solid #ccc; /* Граница поля ввода */
-    border-radius: 5px; /* Скругление углов поля ввода */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+}
+  
+.comment-input::placeholder {
+    color: #aaa;
+}
+
+.comment-list {
+    list-style-type: none; 
+    margin: 0;
+    padding: 0;
+    max-height: 150px; 
+    overflow-y: auto; 
+}
+.comment-list li {
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: #f9f9f9; 
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    font-size: 14px; 
+}
+
+.comment-list li strong {
+    font-weight: bold;
+    color: #333; 
 }
 
 .comment-button {
-    padding: 10px 15px; /* Внутренние отступы кнопки */
-    margin-left: 10px; /* Отступ между полем ввода и кнопкой */
-    background-color: #007bff; /* Цвет фона кнопки */
-    color: white; /* Цвет текста кнопки */
-    border: none; /* Без границы */
-    border-radius: 5px; /* Скругление углов кнопки */
-    cursor: pointer; /* Указатель при наведении */
-    transition: background-color .3s ease; /* Плавный переход цвета фона при наведении */
+    display: block;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff; 
+    color: #fff; 
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .comment-button:hover {
-    background-color: #0056b3; /* Цвет фона кнопки при наведении */
+    background-color: #0056b3; 
 }
 
-/* END POSTS  */
+
+.likes a {
+    text-decoration: none; 
+    color: inherit; 
+    display: flex;
+    align-items: center; 
+    gap: 4px; 
+}
+
+.likes a:hover img {
+    transform: scale(1.2); 
+    transition: transform 0.2s ease;
+}
+
+
+.avatar {
+    border: 2px solid #007bff; 
+}
+
+.post-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
+    transform: translateY(-5px); 
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.like-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.like-button img {
+    width: 20px; 
+    height: auto;
+}
+
+.show-comments {
+    background: none;
+    border: none;
+    color: #007bff;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 5px 0;
+}
+
+.show-comments:hover {
+    color: #0056b3;
+}
+
+/* END POST */
+
+/* START POST DETAIL */
+
+
+
+/* END POST DETAIL */

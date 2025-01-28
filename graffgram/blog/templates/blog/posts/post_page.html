@@ -3,25 +3,50 @@
 {% block title %}GraffGram{% endblock title %}
 
 {% block content %}
-    {% for posts in popular_post  %}
-    <div class="post-card">
-        <div class="post-card__header">
-            <div class="post-card__avatar">
-                <img src="" alt="Avatar" class="avatar__img">
+    {% for post in popular_posts %}
+    <div class="container">
+        <div class="post-card">
+          <div class="post-header">
+            <img src="{{ post.author.profile_image.url }}" alt="User Avatar" class="avatar">
+            <span class="username">{{ post.author.username }}</span>
+          </div>
+          <div class="post-image">
+            <img src="{{ post.image.url }}" alt="Post Image">
+          </div>
+          <div class="post-footer">
+            <div class="stats">
+                <span class="comments">
+                    <img src="{% static 'img/comment.png' %}" class="comment_ico">
+                    {{ post.comments.count }}
+                </span>
+                <span class="likes">
+                    <form action="{% url 'blog:like_post' post_id=post.pk %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="like-button">
+                            <img src="{% static 'img/like.png' %}" class="like_ico">
+                        </button>
+                    </form>
+                    <span class="like-count">{{ post.total_likes }}</span>
+                </span>
+                <span class="shares">
+                    <img src="{% static 'img/repo.png' %}" class="views_ico">{{ post.views }}
+                </span>
             </div>
-            <div class="post-card__user-info">
-                <span class="user-info__nickname">Ник пользователя</span>
-            </div>
-        </div>
-        <img src="{{posts.image.url}}" alt="Post Image" class="post-card__image">
-        <div class="post-card__description">
-            {{post.description}}.
-        </div>
-        <div class="post-card__comment-section">
-            <input type="text" class="comment-input" placeholder="Добавить комментарий...">
-            <button class="comment-button">Отправить</button>
+            {% if post.last_comment %}
+                <ul id="comment-list-{{ post.pk }}" class="comment-list">
+                    <li>
+                        <strong>{{ post.last_comment.author.username }}</strong>: {{ post.last_comment.content }}
+                    </li>
+                </ul>
+            {% endif %}
+            {% if post.comments.count > 1 %}
+                <button class="show-comments" onclick="location.href='{% url 'blog:post_detail' post_id=post.pk %}'">
+                    Посмотреть все комментарии
+                </button>
+            {% endif %}
+
+          </div>
         </div>
     </div>
     {% endfor %}
 {% endblock content %}
-
