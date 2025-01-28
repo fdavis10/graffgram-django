@@ -3,6 +3,9 @@ from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.models import User
 from multiselectfield import MultiSelectField
+# from django.conf import settings
+# from django.contrib.contenttypes.fields import GenericForeignKey
+# from django.contrib.contenttypes.models import ContentType
 
 class Post(models.Model):
 
@@ -50,8 +53,10 @@ class Comment(models.Model):
     class Meta:
         ordering = ['-created']
         verbose_name = 'Комментарий'
-        verbose_name = 'Комментарии'
+        verbose_name_plural = 'Комментарии'
 
     def __str__(self):
         return f'{self.author} comment {self.post}'
     
+# class Like(models.Model):
+#     user = models.ForeignKey(settings.AUTH_USER_MODEL)

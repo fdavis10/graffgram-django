@@ -16,8 +16,8 @@ def post_detail(request, post_id):
     return render(request, 'blog/posts/post_detail.html', {'post': post, 'comments': comments})
 
 @login_required
-def add_comment(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+def add_comment(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
     if request.method == 'POST':
         content = request.POST.get('content')
         if content:
