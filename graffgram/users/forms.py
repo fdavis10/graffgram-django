@@ -11,12 +11,15 @@ class UserLoginForm(AuthenticationForm):
         fields = ['username', 'password']
 
 class UserRegistrationForm(UserCreationForm):
+    phone_number = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'input', 'placeholder': 'Номер телефона'}))
+
     class Meta:
         model = User
         fields = (
             'username',
             'email',
-            'password1'
+            'phone_number',
+            'password1',
             'password2'
         )
 

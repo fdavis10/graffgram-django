@@ -28,11 +28,13 @@ def login(request):
 def registration(request):
     if request.method == 'POST':
         form = UserRegistrationForm(data = request.POST)
+        print(request.POST)
         if form.is_valid():
-            form.save()
-            user = form.instance
+            user = form.save(commit=False)
+            user.phone_number = form.cleaned_data['phone_number']
+            user.save()
             auth.login(request, user)
-            messages.succes(
+            messages.success(
                 request, f'{user.username} зарегестрировался успешно!'
             )
             return HttpResponseRedirect(reverse('users:profile'))
@@ -40,7 +42,7 @@ def registration(request):
             messages.error(request, 'Исправьте ошибки в форме!')
     else:
         form = UserRegistrationForm()
-    return render(request, 'user/registration.html', {"form": form})
+    return render(request, 'users/registration.html', {"form": form})
 
 @login_required
 def profile(request):
