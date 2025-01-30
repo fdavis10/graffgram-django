@@ -12,8 +12,8 @@
 
 .post-detail-image {
     flex: 1;
-    max-width: 1000px; /* Уменьшил ширину */
-    height: 200%; /* Чтобы не оставалось пустого места */
+    max-width: 1000px; 
+    height: 200%; 
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -21,8 +21,8 @@
 
 .post-detail-image img {
     width: 100%;
-    height: 100%; /* Заполняем контейнер */
-    object-fit: cover; /* Обрезаем лишнее */
+    height: 100%; 
+    object-fit: cover; 
 }
 
 .post-detail-info {
@@ -109,8 +109,8 @@
     font-size: 14px;
     color: #333;
     box-sizing: border-box;
-    resize: none; /* Блокируем изменение размера */
-    overflow: auto; /* Если текст превышает высоту, появляется скролл */
+    resize: none; 
+    overflow: auto; 
 }
 
 .comment-input::placeholder {

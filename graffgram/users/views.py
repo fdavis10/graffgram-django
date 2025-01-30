@@ -46,8 +46,12 @@ def registration(request):
 
 @login_required
 def profile(request):
+    user = request.user
+    posts = user.post.all()
+    post_count = posts.count()
+
     if request.method == 'POST':
-        form = ProfileForm(data=request.POST, instance=request.user, files = request.FILES)
+        form = ProfileForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
             messages.success(request, 'Профиль обновлен!')
@@ -56,8 +60,10 @@ def profile(request):
             messages.error(request, 'Пожалуйста, исправьте ошибки в форме')
     else:
         form = ProfileForm(instance = request.user)
+    
+    return render(request, 'users/profile.html', {'form': form, 'user': user, 'posts': posts, 'post_count': post_count})
 
 
 def logout(request):
     auth.logout(request)
-    return redirect(reverse('main:popular_list'))        
+    return redirect(reverse('blog:popular_post'))        

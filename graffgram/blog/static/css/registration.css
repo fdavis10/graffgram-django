@@ -27,14 +27,13 @@
     gap: 5px;
 }
 
-/* Стили для label */
+
 .form-group label {
     font-size: 14px;
     font-weight: bold;
     color: #333;
 }
 
-/* Стили для полей ввода */
 .input {
     width: 100%;
     border-radius: 20px;
@@ -45,13 +44,13 @@
     transition: all 0.3s ease-in-out;
 }
 
-/* Эффект при фокусе */
+
 .input:focus {
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Стили для кнопки */
+
 .form-btn {
     background-color: #007bff;
     color: white;
@@ -82,7 +81,7 @@
     text-decoration: underline;
 }
 
-/* Ошибки */
+
 .error-message {
     background-color: #ffdddd;
     color: red;

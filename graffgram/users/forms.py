@@ -29,10 +29,12 @@ class UserRegistrationForm(UserCreationForm):
         password2 = forms.CharField()
 
 class ProfileForm(UserChangeForm):
+    image = forms.ImageField(required=False, widget=forms.FileInput(attrs={'class': 'upload-input'}))
     class Meta:
         model = User
         fields = (
             'email',
+            'image'
         )
 
         email = forms.CharField()

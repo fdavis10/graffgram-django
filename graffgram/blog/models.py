@@ -36,7 +36,7 @@ class Post(models.Model):
         verbose_name_plural = 'Посты'
 
     def get_absolute_url(self):
-        return reverse('blog:post_page', args=[int(self.pk)])
+        return reverse('blog:post_detail', args=[int(self.pk)])
 
     def total_likes(self):
         return self.likes.count()

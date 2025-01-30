@@ -1,12 +1,53 @@
 {% extends 'blog/base.html' %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock extra_css %}
+
 {% block title %}Профиль{% endblock title %}
 
 {% block content %}
-    <div class="form-login">
-        <p>Профиль</p>
+<div class="profile-container">
+    <div class="profile-card">
+        <div class="avatar-container">
+            {% if user.image %}
+                <img class="profile-avatar" src="{{ user.image.url }}" alt="Аватар">
+            {% else %}
+                <img class="profile-avatar" src="{% static 'default.webp' %}" alt="Аватар">
+            {% endif %}
+        </div>
+        <h2 class="username">{{ user.username }}</h2>
+        <p class="email">📧 {{ user.email }}</p>
+        <p class="post-count">📝 Постов: {{ post_count }}</p>
+        <form method="post" enctype="multipart/form-data" class="profile-form">
+            {% csrf_token %}
+            <label for="id_image" class="upload-label">📷 Изменить аватар:</label>
+            <input type="file" name="image" id="id_image" accept="image/*" class="upload-input">
+            <button type="submit" class="edit-btn">💾 Сохранить</button>
+        </form>
+        {% comment %} <form method="post" enctype="multipart/form-data" class="profile-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="edit-btn">💾 Сохранить</button>
+        </form> {% endcomment %}
     </div>
 
-
-{% endblock content %}
+    <div class="posts-section">
+        <h3>Посты пользователя</h3>
+        <div class="posts-grid">
+            {% for post in posts %}
+                <div class="post-card">
+                    <a href="{{post.get_absolute_url}}">
+                        <img src="{{ post.image.url }}" class="post-image">
+                        <p class="post-description">{{ post.description }}</p>
+                        <span class="post-date">📅 {{ post.publish }}</span>
+                    </a>
+                </div>
+            {% empty %}
+                <p>У вас пока нет постов.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
