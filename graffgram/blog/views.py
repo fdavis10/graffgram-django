@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Comment
 from django.contrib.auth.decorators import login_required
+from .forms import AddPostForm
 
 def popular_post(request):
     popular_posts = Post.objects.prefetch_related('comments').all()
@@ -32,3 +33,14 @@ def like_post(request, post_id):
     else:
         post.likes.add(request.user)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+@login_required
+def add_post(request):
+    form = AddPostForm(request.POST or None, files=request.FILES or None)
+    if form.is_valid():
+        post = form.save(commite=False)
+        post.author = request.user
+        post.save()
+        return redirect('post:post_page')
+
+    return(request, 'new_post.html', {'form': form})

@@ -1,6 +1,36 @@
 {% extends 'blog/base.html' %}
 {% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/post_page.css' %}">
+{% endblock extra_css %}
 {% block title %}GraffGram{% endblock title %}
 
 {% block content %}
+        <div class="post__wrapper__card">
+            {% for post in popular_posts  %}
+                <div class="post_card">
+                    <div class="post_header">
+                        <div class="user_avatar">
+                            <img src="" alt="user-avatar"><span class="username">{{post.author}}</span>
+                        </div>
+                    </div>    
+                    <div class="post_content">
+                        <img src="{{post.image.url}}" alt="">
+                    </div>
+                    <div class="post_footer">
+                        <div class="like">
+                            <a href=""></a>
+                            <ion-icon name="heart-outline"></ion-icon>
+                            <span class="total_likes">{{post.total_likes}}</span>
+                        </div>
+                        <div class="comment">
+                            <ion-icon name="chatbubble-outline"></ion-icon>
+                        </div>
+                        <div class="detail_post">
+                            <ion-icon name="share-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
 {% endblock content %}

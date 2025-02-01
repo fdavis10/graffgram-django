@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm, AuthenticationForm
 from .models import User
+from blog.models import Post
 
 class UserLoginForm(AuthenticationForm):
     username = forms.CharField()
