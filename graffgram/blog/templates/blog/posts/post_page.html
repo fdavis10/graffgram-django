@@ -7,22 +7,28 @@
 
 {% block content %}
         <div class="post__wrapper__card">
-            {% for post in popular_posts  %}
+            {% for post in posts  %}
                 <div class="post_card">
                     <div class="post_header">
                         <div class="user_avatar">
+                            {% if post.author.is_verified %}
+                                <img src="" alt="user-avatar" class="user__avatar"><span class="username">{{post.author}}</span><img src="{% static 'img/verificated.png' %}" class="img-verified">
+                            {% else %}
                             <img src="" alt="user-avatar"><span class="username">{{post.author}}</span>
+                            {% endif %}
                         </div>
                     </div>    
                     <div class="post_content">
                         <img src="{{post.image.url}}" alt="">
                     </div>
                     <div class="post_footer">
-                        <div class="like">
-                            <a href=""></a>
-                            <ion-icon name="heart-outline"></ion-icon>
-                            <span class="total_likes">{{post.total_likes}}</span>
-                        </div>
+                        <form action="{% url 'blog:like_post' post_id=post.id %}" method="post">
+                            {% csrf_token %}
+                            <button class="like-btn" id="like-btn-{{ post.id }}" data-post-id="{{ post.id }}">
+                                <ion-icon name="heart" class="{% if user in post.likes.all %}liked{% else %}unliked{% endif %}"></ion-icon>
+                            </button>
+                        </form>
+                        <span id="like-count-{{ post.id }}">{{ post.likes.count }}</span>
                         <div class="comment">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </div>
@@ -33,4 +39,5 @@
                 </div>
             {% endfor %}
         </div>
+        <script src="{% static 'js/like.js' %}"></script>
 {% endblock content %}

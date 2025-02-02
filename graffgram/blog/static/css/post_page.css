@@ -26,12 +26,26 @@
     max-height: 70px;
 }
 
-.user_avatar img{
+.user_avatar{
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+}
+
+.user__avatar{
     background-color: black;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
+}
+
+.img-verified{
+    width: 15px;
+    height: 15px;
+    position: relative;
+    top: 2px;
+    margin-left: 5px;
 }
 
 .post_content{
@@ -57,9 +71,33 @@
     margin-left: 20px;
 }
 
-ion-icon{
-    font-size: 30px;
-    padding-right: 20px;
-    
+.like-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font-size: 24px;
+    transition: transform 0.2s ease-in-out;
 }
 
+.like-btn:active {
+    transform: scale(1.2);
+}
+
+ion-icon {
+    font-size: 32px;
+    color: black;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Если лайк поставлен */
+.liked {
+    color: red;
+    fill: red;
+}
+
+/* Если лайк не поставлен */
+.unliked {
+    color: black;
+    fill: none;
+}
