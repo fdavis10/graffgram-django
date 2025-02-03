@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 1200px;
+    margin-top: 50px;
     gap: 50px;
 }
 
@@ -12,6 +12,7 @@
     width: 600px;
     height: 600px;
     border-radius: 15px;
+    align-items: flex-start;
 }
 
 .post_card:last-child{
@@ -20,10 +21,17 @@
 
 
 .post_header{
-    display: inline-block;
+    display: flex;
     margin-left: 20px;
     margin-top: 20px;
     max-height: 70px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status_image{
+    order: 2;
+    margin-right: 20px;
 }
 
 .user_avatar{
@@ -71,13 +79,28 @@
     margin-left: 20px;
 }
 
+
+
+.count_likes {
+    font-size: 14px;
+    color: #333;
+    margin-top: 10px; 
+    font-weight: bold;
+    text-align: center;
+}
+
 .like-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background: none;
     border: none;
     cursor: pointer;
     outline: none;
     font-size: 24px;
     transition: transform 0.2s ease-in-out;
+    margin-top: 3px;
 }
 
 .like-btn:active {
@@ -90,14 +113,21 @@ ion-icon {
     transition: color 0.3s ease-in-out;
 }
 
-/* Если лайк поставлен */
+
 .liked {
     color: red;
     fill: red;
 }
 
-/* Если лайк не поставлен */
+
 .unliked {
     color: black;
     fill: none;
+}
+
+.comment, .detail_post {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px; 
 }

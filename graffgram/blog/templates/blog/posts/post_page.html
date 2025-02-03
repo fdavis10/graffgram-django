@@ -10,6 +10,9 @@
             {% for post in posts  %}
                 <div class="post_card">
                     <div class="post_header">
+                        {% if post.status == 'Жива' %}
+                            <div class="status_image">{{post.status}}</div>
+                        {% endif %}
                         <div class="user_avatar">
                             {% if post.author.is_verified %}
                                 <img src="" alt="user-avatar" class="user__avatar"><span class="username">{{post.author}}</span><img src="{% static 'img/verificated.png' %}" class="img-verified">
@@ -28,7 +31,7 @@
                                 <ion-icon name="heart" class="{% if user in post.likes.all %}liked{% else %}unliked{% endif %}"></ion-icon>
                             </button>
                         </form>
-                        <span id="like-count-{{ post.id }}">{{ post.likes.count }}</span>
+                        <span id="like-count-{{ post.id }}" class="count_likes">{{ post.likes.count }}</span>
                         <div class="comment">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </div>

@@ -90,14 +90,12 @@ body {
     border: 3px solid #315cfd;
 }
 
-/* Контейнер с контентом */
 .wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     max-width: 1000px;
-    height: 100vh;
     margin: 0 auto;
     padding: 20px;
 }

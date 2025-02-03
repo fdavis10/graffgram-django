@@ -40,9 +40,13 @@ def like_post(request, post_id):
 def add_post(request):
     form = AddPostForm(request.POST or None, files=request.FILES or None)
     if form.is_valid():
-        post = form.save(commite=False)
+        post = form.save(commit=False)  
         post.author = request.user
+        status_values = form.cleaned_data['status']
+        post.status = ', '.join(status_values)
         post.save()
-        return redirect('post:post_page')
+        return redirect('blog:popular_posts')
+    else:
+        form = AddPostForm()
 
-    return(request, 'new_post.html', {'form': form})
+    return render(request, 'blog/posts/create_post.html', {'form': form})

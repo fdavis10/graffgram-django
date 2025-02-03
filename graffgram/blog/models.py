@@ -23,7 +23,7 @@ class Post(models.Model):
     description = models.TextField(max_length=500, verbose_name='Описание')
     publish = models.DateTimeField(auto_now_add=True, verbose_name='Опубликовано')
     updated = models.DateTimeField(auto_now=True, verbose_name='Изменено')
-    status = MultiSelectField(choices=STATUS_OF_WORK, max_choices=2, blank=False, verbose_name='Статус работы')
+    status = MultiSelectField(choices=STATUS_OF_WORK, max_choices=1, blank=False, verbose_name='Статус работы')
     views = models.IntegerField(default = 0, verbose_name='Просмотры')
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='likes', blank=True, verbose_name='Лайки')
 
