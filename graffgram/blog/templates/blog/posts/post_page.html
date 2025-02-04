@@ -15,9 +15,12 @@
                         {% endif %}
                         <div class="user_avatar">
                             {% if post.author.is_verified %}
-                                <img src="" alt="user-avatar" class="user__avatar"><span class="username">{{post.author}}</span><img src="{% static 'img/verificated.png' %}" class="img-verified">
+                                <img src="{{user.image.url}}" alt="user-avatar" class="user__avatar">
+                                <span class="username">{{post.author}}</span>
+                                <img src="{% static 'img/verificated.png' %}" class="img-verified">
                             {% else %}
-                            <img src="" alt="user-avatar"><span class="username">{{post.author}}</span>
+                            <img src="{{user.image.url}}" alt="user-avatar" class="user__avatar">
+                            <span class="username">{{post.author}}</span>
                             {% endif %}
                         </div>
                     </div>    

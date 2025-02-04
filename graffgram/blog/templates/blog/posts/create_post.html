@@ -7,7 +7,7 @@
 
 {% block content %}
 <div class="form-registration">
-    <p class="title">Создать пост</p>
+    <p class="title">Добавить работу</p>
     <form action="{% url 'blog:add_post' %}" method="post" enctype="multipart/form-data" class="form-reg">
         {% csrf_token %}
         {% if form.non_field_errors %}

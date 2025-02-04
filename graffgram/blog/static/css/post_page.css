@@ -34,26 +34,28 @@
     margin-right: 20px;
 }
 
-.user_avatar{
-    display: inline-block;
-    align-items: center;
-    justify-content: center;
-}
-
-.user__avatar{
-    background-color: black;
+.user__avatar {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
+    border: 2px solid rgba(255,255,255,0.13); 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.img-verified{
+.img-verified {
     width: 15px;
     height: 15px;
+    margin-left: -5px; 
     position: relative;
-    top: 2px;
-    margin-left: 5px;
+    z-index: 2; 
+}
+
+.user_avatar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .post_content{

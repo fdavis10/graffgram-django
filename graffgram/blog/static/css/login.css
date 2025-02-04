@@ -1,0 +1,92 @@
+.form-box {
+    margin-top: 100px;
+    max-width: 300px;
+    background-color: rgba(0, 0, 0, 0.055);
+    overflow: hidden;
+    border-radius: 16px;
+    color: #010101;
+  }
+  
+  .form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 24px 24px;
+    gap: 16px;
+    text-align: center;
+  }
+  
+  /*Form text*/
+  .title {
+    font-weight: bold;
+    font-size: 1.6rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  /*Inputs box*/
+  .form-container {
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #fff;
+    margin: 1rem 0 .5rem;
+    width: 100%;
+  }
+  
+  .input {
+    background: none;
+    border: 0;
+    outline: 0;
+    height: 40px;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    font-size: .9rem;
+    padding: 8px 15px;
+  }
+  
+  .form-section {
+    padding: 16px;
+    font-size: .85rem;
+    background-color: rgba(0, 0, 0, 0.096);
+    box-shadow: rgb(0 0 0 / 8%) 0 -1px;
+  }
+  
+  .form-section a {
+    font-weight: bold;
+    color: #0066ff;
+    transition: color .3s ease;
+  }
+  
+  .form-section a:hover {
+    color: #005ce6;
+    text-decoration: underline;
+  }
+  
+  /*Button*/
+  .btn-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 45px;
+    border: 3px solid #315cfd;
+    border-radius: 45px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: #315cfd;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 550;
+    text-decoration: none;
+}
+
+.btn-login:hover {
+    background: white;
+    color: #315cfd;
+    border: 3px solid #315cfd;
+}

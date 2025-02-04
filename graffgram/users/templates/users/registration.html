@@ -11,7 +11,7 @@
     <div class="form-registration">
         <p class="title">Регистрация</p>
         <form action="{% url 'users:registration' %}" method="post" class="form-reg">
-            crs
+            {% csrf_token %}
 
             {% if form.errors %}
                 <div class="error-message">

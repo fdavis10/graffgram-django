@@ -37,7 +37,7 @@ def registration(request):
             messages.success(
                 request, f'{user.username} зарегестрировался успешно!'
             )
-            return HttpResponseRedirect(reverse('users:profile'))
+            return HttpResponseRedirect(reverse('blog:popular_posts'))
         else:
             messages.error(request, 'Исправьте ошибки в форме!')
     else:
@@ -66,4 +66,4 @@ def profile(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect(reverse('blog:popular_post'))        
+    return redirect(reverse('blog:popular_posts'))        

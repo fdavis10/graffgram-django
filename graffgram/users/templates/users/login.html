@@ -1,12 +1,27 @@
 {% extends 'blog/base.html' %}
 {% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock extra_css %}
+
 
 {% block title %}Авторизация{% endblock title %}
 
 {% block content %}
-    <div class="form-login">
-        <p>Авторизация</p>
+<div class="form-box">
+    <form action="{% url "users:login" %}" method="post" class="form">
+        {% csrf_token %}
+        <span class="title">Вход в аккаунт</span>
+        <span class="subtitle">Войдите в свой аккаунт используя имя пользователя или электронную почту</span>
+        <div class="form-container">
+            <input type="text" class="input" placeholder="Имя пользователя">
+            <input type="password" class="input" placeholder="Пароль">
+        </div>
+        <button class="btn-login">Войти</button>
+    </form>
+    <div class="form-section">
+      <p>Нету аккаунта? <a href="{% url "users:registration" %}">Создать!</a> </p>
     </div>
-
+    </div>
 
 {% endblock content %}
