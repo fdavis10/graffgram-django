@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth, messages
 from django.urls import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from .forms import UserLoginForm, UserRegistrationForm, ProfileForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Prefetch
@@ -11,19 +11,20 @@ def login(request):
     if request.method == "POST":
         form = UserLoginForm(data=request.POST)
         if form.is_valid():
-            username = request.POST['username']
-            password = request.POST['password']
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
             user = auth.authenticate(username=username, password=password)
-            if user:
+            if user is not None:
                 auth.login(request, user)
-                return HttpResponseRedirect(reverse('main:popular_post'))
+                return redirect(reverse('main:popular_post'))
             else:
                 messages.error(request, 'Неверное имя пользователя или пароль!')
         else:
-            messages.error(request, 'Исправьте ошибки в форме!')
+            for error in form.errors.values():
+                messages.error(request, error)
     else:
         form = UserLoginForm()
-    return render(request, 'users/login.html', {'form':form})
+    return render(request, 'users/login.html', {'form': form})
 
 def registration(request):
     if request.method == 'POST':
@@ -55,7 +56,7 @@ def profile(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Профиль обновлен!')
-            return HttpResponseRedirect(reverse('users:profile'))
+            return HttpResponse(reverse('users:profile'))
         else:
             messages.error(request, 'Пожалуйста, исправьте ошибки в форме')
     else:

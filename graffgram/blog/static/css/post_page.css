@@ -1,4 +1,4 @@
-.post__wrapper__card{
+.post__wrapper__card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,7 +10,8 @@
     background-color: rgba(0, 0, 0, 0.055);
     box-shadow: 0px 5px 8px 0px rgba(34, 60, 80, 0.2);
     width: 600px;
-    height: 600px;
+    height: 650px;
+    max-height: 700px;
     border-radius: 15px;
     align-items: flex-start;
 }
@@ -62,6 +63,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     margin-top: 30px;
 
 }
@@ -74,10 +76,26 @@
     background-color: black;
 }
 
-.post_footer{
+.post_description {
+    margin-top: 10px;
+    width: 90%;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.281);
+    color: #333;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.post_description_span{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.post_footer {
     display: flex;
-    height: 40px;
-    margin-top: 20px;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
     margin-left: 20px;
 }
 
@@ -127,9 +145,57 @@ ion-icon {
     fill: none;
 }
 
-.comment, .detail_post {
+.comment {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-left: 10px; 
+}
+
+.comment_section {
+    margin-top: 15px;
+}
+
+.comment-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f9f9f9;
+    border-radius: 25px;
+    padding: 10px;
+    width: 125%;
+    justify-content: center;
+}
+
+.comment-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+.comment-input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 14px;
+    padding: 5px;
+    resize: none;
+    text-align: center;
+}
+
+.comment-submit-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.comment-submit-btn:hover {
+    background: #0056b3;
 }

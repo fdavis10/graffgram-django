@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Comment
 from django.contrib.auth.decorators import login_required
-from .forms import AddPostForm
+from .forms import AddPostForm, CommentForm
 
 def popular_post(request):
     posts = Post.objects.prefetch_related('comments').all()
@@ -18,12 +18,17 @@ def post_detail(request, post_id):
 
 @login_required
 def add_comment(request, post_id):
-    post = get_object_or_404(Post, pk=post_id)
-    if request.method == 'POST':
-        content = request.POST.get('content')
-        if content:
-            Comment.objects.create(post=post, author=request.user, content=content)
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    post = get_object_or_404(Post, id=post_id)
+    if request.method == "POST":
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment=comment_form.save(commit=False)
+            comment.post = post
+            comment.author = request.user
+            comment.save()
+            return redirect('blog:popular_posts')
+    return redirect('blog:popular_posts')
+
 
 @login_required
 def like_post(request, post_id):

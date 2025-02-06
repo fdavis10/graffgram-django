@@ -26,6 +26,9 @@
                     </div>    
                     <div class="post_content">
                         <img src="{{post.image.url}}" alt="">
+                        <div class="post_description">
+                            <span class="post_description_span">{{post.description|truncatechars:50}}</span>
+                        </div>
                     </div>
                     <div class="post_footer">
                         <form action="{% url 'blog:like_post' post_id=post.id %}" method="post">
@@ -38,8 +41,15 @@
                         <div class="comment">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </div>
-                        <div class="detail_post">
-                            <ion-icon name="share-outline"></ion-icon>
+                        <div class="comment_section">
+                            <form action="{% url 'blog:add_comment' post_id=post.id %}" class="comment-form" method="post">
+                                {% csrf_token %}
+                                <div class="comment-box">
+                                    <img src="{{ user.image.url }}" alt="avatar" class="comment-avatar">
+                                    <textarea name="content" class="comment-input" placeholder="Комментарий здесь!"></textarea>
+                                    <button type="submit" class="comment-submit-btn">Отправить</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
