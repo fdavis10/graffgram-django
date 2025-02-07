@@ -68,7 +68,7 @@
 
 }
 
-.post_content img {
+.post_content img, .post_content a {
     width: 100%;         
     height: auto;        
     max-height: 400px;   

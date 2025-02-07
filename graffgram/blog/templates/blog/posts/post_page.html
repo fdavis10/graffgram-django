@@ -25,7 +25,9 @@
                         </div>
                     </div>    
                     <div class="post_content">
-                        <img src="{{post.image.url}}" alt="">
+                        <a href="{{post.get_absolute_url}}">
+                            <img src="{{post.image.url}}" alt="post-image">
+                        </a>
                         <div class="post_description">
                             <span class="post_description_span">{{post.description|truncatechars:50}}</span>
                         </div>
