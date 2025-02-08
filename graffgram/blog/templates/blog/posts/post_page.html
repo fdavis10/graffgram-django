@@ -10,8 +10,10 @@
             {% for post in posts  %}
                 <div class="post_card">
                     <div class="post_header">
-                        {% if post.status == 'Жива' %}
-                            <div class="status_image">{{post.status}}</div>
+                        {% if post.status == "Жива" %}
+                            <div class="status_image_live">{{post.status|upper}}</div>
+                        {% else %}
+                            <div class="status_image_buff">{{post.status|upper}}</div>
                         {% endif %}
                         <div class="user_avatar">
                             {% if post.author.is_verified %}

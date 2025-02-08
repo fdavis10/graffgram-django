@@ -32,6 +32,7 @@
                     </div>
                 {% endif %}
             </div>
+
             <div class="form-group">
                 <label for="id_image">Изображение</label>
                 <input type="file" 
@@ -48,29 +49,14 @@
                     </div>
                 {% endif %}
             </div>
+
             <div class="form-group">
-                <label>Статус работы</label>
-                <div class="radio-group">
-                    {% for choice in form.status %}
-                        <label class="radio-label">
-                            {{ choice.tag }}
-                            <span class="radio-custom"></span>
-                            <span class="radio-text">{{ choice.choice_label }}</span>
-                        </label>
-                    {% endfor %}
-                </div>
-                {% if form.status.errors %}
-                    <div class="field-error">
-                        {% for error in form.status.errors %}
-                            {{ error }}
-                        {% endfor %}
-                    </div>
-                {% endif %}
+                <label for="id_status">Статус работы</label>
+                {{ form.status }}
             </div>
 
             <button class="form-btn" type="submit">Создать</button>
         </div>
     </form>
 </div>
-
 {% endblock content %}

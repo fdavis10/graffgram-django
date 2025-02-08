@@ -60,10 +60,13 @@ body {
     text-decoration: none;
     color: #313131;
     transition: opacity 0.2s ease;
+    border-bottom: 0 solid #313131;
+    
 }
 
 .navbar-item:hover {
     opacity: 0.5;
+    border-bottom-width: 3px;
 }
 
 /* Кнопка "Создать" */

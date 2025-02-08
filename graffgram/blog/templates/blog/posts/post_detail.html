@@ -14,23 +14,31 @@
                 <img src="{{post.image.url}}" alt="post-image">
             </div>
             <div class="author_info">
-                {% if post.author.is_verified %}
-                    <img src="{{user.image.url}}" alt="user-avatar" class="user__avatar">
-                    <span class="username">{{post.author}}</span>
-                    <img src="{% static 'img/verificated.png' %}" class="img-verified">
-                    <span class="date_create">{{post.publish|date:"d.m.Y"}}</span>
-                {% else %}
-                    <img src="{{user.image.url}}" alt="user-avatar" class="user__avatar">
-                    <span class="username">{{post.author}}</span>
-                    <span class="date_create">{{post.publish|date:"d.m.Y"}}</span>
-                {% endif %}
-                <form action="{% url 'blog:like_post' post_id=post.id %}" method="post">
-                    {% csrf_token %}
-                    <button class="like-btn" id="like-btn-{{ post.id }}" data-post-id="{{ post.id }}">
-                        <ion-icon name="heart" class="{% if user in post.likes.all %}liked{% else %}unliked{% endif %}"></ion-icon>
-                    </button>
-                </form>
+                <img src="{{user.image.url}}" alt="user-avatar" class="user__avatar">
+                
+                <div class="user_details">
+                    <div class="user_name">
+                        <span class="username">{{ post.author }}</span>
+                        {% if post.author.is_verified %}
+                            <img src="{% static 'img/verificated.png' %}" class="img-verified">
+                        {% endif %}
+                    </div>
+                    <span class="date_create">{{ post.publish|date:"d.m.Y" }}</span>
+                </div>
+                <div class="post_menu">
+                    <form action="{% url 'blog:like_post' post_id=post.id %}" method="post">
+                        {% csrf_token %}
+                        <button class="like-btn" id="like-btn-{{ post.id }}" data-post-id="{{ post.id }}">
+                            <ion-icon name="heart" class="{% if user in post.likes.all %}liked{% else %}unliked{% endif %}"></ion-icon>
+                        </button>
+                    </form>
+                    <span id="like-count-{{ post.id }}" class="count_likes">{{ post.likes.count }}</span>
+                </div>
+            </div>
+            <div class="commentlist">
+                <span class="commentaries"><p>Комментарии</p></span>
             </div>
         </div>
     </div>
+    <script src="{% static 'js/like.js' %}"></script>
 {% endblock content %}

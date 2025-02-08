@@ -43,14 +43,13 @@ def like_post(request, post_id):
 
 @login_required
 def add_post(request):
-    form = AddPostForm(request.POST or None, files=request.FILES or None)
-    if form.is_valid():
-        post = form.save(commit=False)  
-        post.author = request.user
-        status_values = form.cleaned_data['status']
-        post.status = ', '.join(status_values)
-        post.save()
-        return redirect('blog:popular_posts')
+    if request.method == "POST":
+        form = AddPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)  
+            post.author = request.user
+            post.save()
+            return redirect('blog:popular_posts')
     else:
         form = AddPostForm()
 

@@ -2,21 +2,18 @@ from django import forms
 from .models import  Post, Comment
 
 class AddPostForm(forms.ModelForm):
-    STATUS_CHOICES = Post.STATUS_OF_WORK
-
-    status = forms.MultipleChoiceField(
-        choices=STATUS_CHOICES,
-        widget=forms.CheckboxSelectMultiple,
+    status = forms.ChoiceField(
+        choices=Post.STATUS_OF_WORK,
+        widget=forms.Select,
         required=True,
-        label='Статус работы'
+        label="Статус работы"
     )
-
     class Meta:
         model = Post
         fields = ['image', 'description', 'status']
-        widgets = {
-            'decriptions': forms.Textarea(attrs={'rows': 4})
-        }
+#         widgets = {
+#         'status': forms.Select(choices=Post.STATUS_OF_WORK),
+# }
 
 class CommentForm(forms.ModelForm):
     content = forms.CharField(label="", widget=forms.Textarea(

@@ -8,7 +8,8 @@
 
 .detail_post_card{
     display: flex;
-    justify-content: space-between;
+    justify-content: column;
+    align-items: center;
     background-color: rgba(0, 0, 0, 0.055);
     box-shadow: 0px 5px 8px 0px rgba(34, 60, 80, 0.2);
     width: 1200px;
@@ -32,46 +33,99 @@
     border-radius: 15px;
 }
 
-.author_info{
+.post_menu{
     display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-left: auto;
+
+}
+
+.author_info {
+    display: flex;
+    align-items: center;  /* Центрируем по вертикали */
     background-color: rgba(0, 0, 0, 0.158);
-    width: 550px;
+    width: 100%;
     height: 80px;
     border-radius: 15px;
     margin-top: 20px;
     margin-right: 20px;
+    margin-left: 20px;
+    padding: 10px;
 }
 
 .user__avatar {
-    margin-top: 15px;
-    margin-left: 10px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid rgba(255,255,255,0.13); 
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 2px solid rgba(255, 255, 255, 0.13);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user_details {
+    display: flex;
+    flex-direction: column; /* Делаем элементы вертикальными */
+    margin-left: 10px;
+}
+
+.username {
+    font-weight: 500;
+    align-items: center;
 }
 
 .img-verified {
     width: 15px;
     height: 15px;
-    margin-left: 5px; 
-    margin-top: 32px;
-    position: relative;
-    z-index: 2; 
+    vertical-align: middle;
 }
 
-.username{
-    font-weight: 500;
-    margin-top: 30px;
-    margin-left: 5px;
-}
-
-.date_create{
+.date_create {
     font-size: 13px;
-    position: relative;
-    right: 84px;
     color: #666666;
-    margin-top: 50px;
+    margin-top: 3px; /* Небольшой отступ от имени */
+}
+
+.count_likes {
+    font-size: 14px;
+    color: #333;
+    margin-top: 10px; 
+    font-weight: bold;
+    text-align: center;
+}
+
+.like-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font-size: 24px;
+    transition: transform 0.2s ease-in-out;
+    margin-top: 3px;
+}
+
+.like-btn:active {
+    transform: scale(1.2);
+}
+
+ion-icon {
+    font-size: 32px;
+    color: black;
+    transition: color 0.3s ease-in-out;
+}
+
+
+.liked {
+    color: red;
+    fill: red;
+}
+
+
+.unliked {
+    color: black;
+    fill: none;
 }

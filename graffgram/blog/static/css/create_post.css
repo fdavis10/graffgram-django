@@ -88,68 +88,53 @@ textarea.input {
     text-decoration: underline;
 }
 
-.radio-group {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 10px;
+/* Общий стиль блока */
+.form-group {
+    margin-bottom: 20px;
 }
 
-.radio-label {
-    display: flex;
-    align-items: center;
-    position: relative;
-    cursor: pointer;
-    padding-left: 35px;
-    user-select: none;
-}
-
-.radio-label input[type="radio"] {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
-
-.radio-custom {
-    position: absolute;
-    left: 0;
-    height: 20px;
-    width: 20px;
-    background-color: #fff;
-    border: 2px solid #ddd;
-    border-radius: 50%;
-    transition: all 0.3s;
-}
-
-.radio-label:hover input ~ .radio-custom {
-    border-color: #4CAF50;
-}
-
-.radio-label input:checked ~ .radio-custom {
-    background-color: #4CAF50;
-    border-color: #4CAF50;
-}
-
-.radio-custom:after {
-    content: "";
-    position: absolute;
-    display: none;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: white;
-}
-
-.radio-label input:checked ~ .radio-custom:after {
+/* Стили для лейбла */
+.form-group label {
     display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
 }
 
-.radio-text {
+/* Стили для select */
+#id_status {
+    width: 100%;
+    padding: 12px;
     font-size: 14px;
-    color: #555;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    background-color: #fff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+/* При наведении */
+#id_status:hover {
+    border-color: #315cfd;
+}
+
+/* При фокусе */
+#id_status:focus {
+    border-color: #315cfd;
+    box-shadow: 0 0 5px rgba(49, 92, 253, 0.5);
+    outline: none;
+}
+
+/* Стили для выпадающего списка */
+#id_status option {
+    padding: 10px;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Стили при выборе */
+#id_status option:checked {
+    background-color: #315cfd;
+    color: white;
 }
