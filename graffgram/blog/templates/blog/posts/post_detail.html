@@ -13,32 +13,55 @@
             <div class="detail_post_image">
                 <img src="{{post.image.url}}" alt="post-image">
             </div>
-            <div class="author_info">
-                <img src="{{user.image.url}}" alt="user-avatar" class="user__avatar">
-                
-                <div class="user_details">
-                    <div class="user_name">
-                        <span class="username">{{ post.author }}</span>
-                        {% if post.author.is_verified %}
-                            <img src="{% static 'img/verificated.png' %}" class="img-verified">
-                        {% endif %}
+            <div class="post_content">
+                <div class="author_info">
+                    <img src="{{user.image.url}}" alt="user-avatar" class="user__avatar">
+                    
+                    <div class="user_details">
+                        <div class="user_name">
+                            <span class="username">{{ post.author }}</span>
+                            {% if post.author.is_verified %}
+                                <img src="{% static 'img/verificated.png' %}" class="img-verified">
+                            {% endif %}
+                        </div>
+                        <span class="date_create">{{ post.publish|date:"d.m.Y" }}</span>
                     </div>
-                    <span class="date_create">{{ post.publish|date:"d.m.Y" }}</span>
+                    <div class="post_menu">
+                        <form action="{% url 'blog:like_post' post_id=post.id %}" method="post">
+                            {% csrf_token %}
+                            <button class="like-btn" id="like-btn-{{ post.id }}" data-post-id="{{ post.id }}">
+                                <ion-icon name="heart" class="{% if user in post.likes.all %}liked{% else %}unliked{% endif %}"></ion-icon>
+                            </button>
+                        </form>
+                        <span id="like-count-{{ post.id }}" class="count_likes">{{ post.likes.count }}</span>
+                    </div>
                 </div>
-                <div class="post_menu">
-                    <form action="{% url 'blog:like_post' post_id=post.id %}" method="post">
+                <div class="add_comment_form">
+                    <form id="comment-form" action="{% url 'blog:add_comment' post_id=post.id %}" method="post">
                         {% csrf_token %}
-                        <button class="like-btn" id="like-btn-{{ post.id }}" data-post-id="{{ post.id }}">
-                            <ion-icon name="heart" class="{% if user in post.likes.all %}liked{% else %}unliked{% endif %}"></ion-icon>
-                        </button>
+                        <div class="comment-box">
+                            <img src="{{ user.image.url }}" alt="avatar" class="comment-avatar">
+                            <textarea name="content" id="comment-content" class="comment-input" placeholder="Добавьте комментарий"></textarea>
+                            <button type="submit" class="comment-submit-btn">Отправить</button>
+                        </div>
                     </form>
-                    <span id="like-count-{{ post.id }}" class="count_likes">{{ post.likes.count }}</span>
                 </div>
-            </div>
-            <div class="commentlist">
-                <span class="commentaries"><p>Комментарии</p></span>
+                <div class="comments_section_detail">
+                    <h3>Комментарии</h3>
+                    <div id="comments-list">
+                        {% for comment in comments %}
+                            <div class="comment_detail">
+                                <p><strong>{{ comment.author }}</strong>: {{ comment.content|linebreaks }}</p>
+                                <span class="comment_date_detail">{{ comment.created|date:"d.m.Y H:i" }}</span>
+                            </div>
+                        {% empty %}
+                            <p id="no-comments">Комментариев пока нет.</p>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <script src="{% static 'js/comment.js' %}"></script>
     <script src="{% static 'js/like.js' %}"></script>
 {% endblock content %}

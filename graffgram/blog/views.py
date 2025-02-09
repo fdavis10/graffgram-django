@@ -26,8 +26,14 @@ def add_comment(request, post_id):
             comment.post = post
             comment.author = request.user
             comment.save()
-            return redirect('blog:popular_posts')
-    return redirect('blog:popular_posts')
+            return JsonResponse({
+                "success": True,
+                "author": comment.author.username,
+                "content": comment.content,
+                "created_at": comment.created.strftime("%d.%m.%Y %H:%M")
+            })
+    
+    return JsonResponse({"success": False}, status=400)
 
 
 @login_required

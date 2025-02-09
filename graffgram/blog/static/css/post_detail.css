@@ -6,30 +6,27 @@
     gap: 50px;
 }
 
-.detail_post_card{
+.detail_post_card {
     display: flex;
-    justify-content: column;
-    align-items: center;
+    flex-direction: row;
     background-color: rgba(0, 0, 0, 0.055);
     box-shadow: 0px 5px 8px 0px rgba(34, 60, 80, 0.2);
     width: 1200px;
-    height: 650px;
-    max-height: 700px;
+    height: auto; 
     border-radius: 15px;
+    padding: 20px;
 }
 
-.detail_post_image{
-    display: flex;
-    margin-top: 20px;
-    margin-left: 20px;
+.detail_post_image {
+    width: 50%; 
+    margin-right: 20px;
 }
 
-.detail_post_image img{
-    width: 100%;         
-    height: 900px;        
-    max-height: 600px;   
-    object-fit: cover;   
-    background-color: black;
+.detail_post_image img {
+    width: 100%;
+    height: 100%;
+    max-height: 600px;
+    object-fit: cover;
     border-radius: 15px;
 }
 
@@ -41,16 +38,19 @@
 
 }
 
+.post_content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
 .author_info {
     display: flex;
-    align-items: center;  /* Центрируем по вертикали */
+    align-items: center;
     background-color: rgba(0, 0, 0, 0.158);
     width: 100%;
     height: 80px;
     border-radius: 15px;
-    margin-top: 20px;
-    margin-right: 20px;
-    margin-left: 20px;
     padding: 10px;
 }
 
@@ -65,7 +65,7 @@
 
 .user_details {
     display: flex;
-    flex-direction: column; /* Делаем элементы вертикальными */
+    flex-direction: column; 
     margin-left: 10px;
 }
 
@@ -83,7 +83,7 @@
 .date_create {
     font-size: 13px;
     color: #666666;
-    margin-top: 3px; /* Небольшой отступ от имени */
+    margin-top: 3px; 
 }
 
 .count_likes {
@@ -128,4 +128,125 @@ ion-icon {
 .unliked {
     color: black;
     fill: none;
+}
+
+.add_comment_form {
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.comment-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f9f9f9;
+    border-radius: 25px;
+    padding: 10px;
+    width: 100%;
+}
+
+.comment-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.comment-input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 14px;
+    padding: 5px;
+    resize: none;
+}
+
+.comment-submit-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.comment-submit-btn:hover {
+    background: #0056b3;
+}
+
+
+.comments_section_detail {
+    margin-top: 10px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-height: 400px; 
+    overflow-y: auto; 
+}
+
+
+.comments_list {
+    flex-grow: 1;
+    overflow-y: auto; 
+    padding: 10px;
+    max-height: 350px; 
+}
+
+
+.comments_section_detail::-webkit-scrollbar {
+    width: 8px;
+}
+
+.comments_section_detail::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.comments_section_detail::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+.comments_section_detail::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+.comments_list {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+    max-height: 300px; 
+}
+
+
+.comment_detail {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment_date_detail {
+    font-size: 12px;
+    color: gray;
+    display: block;
+    margin-top: 5px;
+}
+
+.comment_detail p {
+    margin: 0;
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+    white-space: normal; 
+    max-width: 100%; 
 }

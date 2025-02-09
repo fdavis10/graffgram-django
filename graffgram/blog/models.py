@@ -47,7 +47,7 @@ class Post(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments', verbose_name='Комментарии')
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, verbose_name='Автор')
-    content = models.TextField(verbose_name='Комментарий')
+    content = models.TextField(max_length=50, verbose_name='Комментарий')
     created = models.DateTimeField(auto_now_add=True, verbose_name='Создан')
 
     class Meta:
