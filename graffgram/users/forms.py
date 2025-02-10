@@ -31,11 +31,15 @@ class UserRegistrationForm(UserCreationForm):
 
 class ProfileForm(UserChangeForm):
     image = forms.ImageField(required=False, widget=forms.FileInput(attrs={'class': 'upload-input'}))
+    bio = forms.CharField(widget=forms.Textarea(attrs={'class':'input textarea', 'placeholder':'Расскажи о себе'}), required=False)
+    phone_number = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'input text'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'input email'}), required=True)
+
     class Meta:
         model = User
         fields = (
             'email',
-            'image'
+            'image',
+            'phone_number',
+            'bio'
         )
-
-        email = forms.CharField()

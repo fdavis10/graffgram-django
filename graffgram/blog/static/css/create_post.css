@@ -36,7 +36,7 @@
 
 textarea.input {
     height: 120px;
-    resize: vertical;
+    resize: none;
 }
 
 .form-btn{
@@ -88,12 +88,12 @@ textarea.input {
     text-decoration: underline;
 }
 
-/* Общий стиль блока */
+
 .form-group {
     margin-bottom: 20px;
 }
 
-/* Стили для лейбла */
+
 .form-group label {
     display: block;
     font-size: 16px;
@@ -102,7 +102,7 @@ textarea.input {
     margin-bottom: 8px;
 }
 
-/* Стили для select */
+
 #id_status {
     width: 100%;
     padding: 12px;
@@ -114,26 +114,26 @@ textarea.input {
     cursor: pointer;
 }
 
-/* При наведении */
+
 #id_status:hover {
     border-color: #315cfd;
 }
 
-/* При фокусе */
+
 #id_status:focus {
     border-color: #315cfd;
     box-shadow: 0 0 5px rgba(49, 92, 253, 0.5);
     outline: none;
 }
 
-/* Стили для выпадающего списка */
+
 #id_status option {
     padding: 10px;
     background-color: #fff;
     color: #333;
 }
 
-/* Стили при выборе */
+
 #id_status option:checked {
     background-color: #315cfd;
     color: white;

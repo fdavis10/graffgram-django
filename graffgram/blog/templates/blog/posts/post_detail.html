@@ -51,7 +51,9 @@
                     <div id="comments-list">
                         {% for comment in comments %}
                             <div class="comment_detail">
-                                <p><strong>{{ comment.author }}</strong>: {{ comment.content|linebreaks }}</p>
+                                <p><strong>{{ comment.author }}</strong>{% if post.author.is_verified %}
+                                    <img src="{% static 'img/verificated.png' %}" class="img-verified">
+                                {% endif %}: {{ comment.content|linebreaks }}</p>
                                 <span class="comment_date_detail">{{ comment.created|date:"d.m.Y H:i" }}</span>
                             </div>
                         {% empty %}

@@ -17,11 +17,11 @@
                         {% endif %}
                         <div class="user_avatar">
                             {% if post.author.is_verified %}
-                                <img src="{{user.image.url}}" alt="user-avatar" class="user__avatar">
+                                <img src="{{post.author.image.url|default:'graffgram\media\users_avatars\default_avatar.jpg'}}" alt="user-avatar" class="user__avatar">
                                 <span class="username">{{post.author}}</span>
                                 <img src="{% static 'img/verificated.png' %}" class="img-verified">
                             {% else %}
-                            <img src="{{user.image.url}}" alt="user-avatar" class="user__avatar">
+                            <img src="{{post.author.image.url|default:'graffgram\media\users_avatars\default_avatar.jpg'}}" alt="user-avatar" class="user__avatar">
                             <span class="username">{{post.author}}</span>
                             {% endif %}
                         </div>

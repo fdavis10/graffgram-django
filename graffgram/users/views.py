@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import auth, messages
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
+from .models import User
 from .forms import UserLoginForm, UserRegistrationForm, ProfileForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Prefetch
+from blog.models import Post
 
 
 def login(request):
@@ -46,24 +48,34 @@ def registration(request):
     return render(request, 'users/registration.html', {"form": form})
 
 @login_required
-def profile(request):
+def edit_profile(request):
     user = request.user
-    posts = user.post.all()
-    post_count = posts.count()
-
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
             messages.success(request, 'Профиль обновлен!')
-            return HttpResponse(reverse('users:profile'))
+            return HttpResponseRedirect(reverse('users:profile'))
         else:
             messages.error(request, 'Пожалуйста, исправьте ошибки в форме')
     else:
         form = ProfileForm(instance = request.user)
     
-    return render(request, 'users/profile.html', {'form': form, 'user': user, 'posts': posts, 'post_count': post_count})
+    return render(request, 'users/edit_profile.html', {'form': form, 'user': user})
 
+
+@login_required
+def profile_user(request, pk=None):
+    user = request.user
+    posts = Post.objects.filter(author=user)
+    post_count = posts.count()
+    total_likes = sum(post.likes.count() for post in posts)
+    if pk:
+        user = get_object_or_404(User, pk)
+    else:
+        user = request.user
+    return render(request, 'users/profile_user.html', {"posts": posts, "post_count": post_count, "total_likes": total_likes})
+        
 
 def logout(request):
     auth.logout(request)
