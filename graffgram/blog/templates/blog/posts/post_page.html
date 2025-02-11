@@ -20,9 +20,11 @@
                                 <img src="{{post.author.image.url|default:'graffgram\media\users_avatars\default_avatar.jpg'}}" alt="user-avatar" class="user__avatar">
                                 <span class="username">{{post.author}}</span>
                                 <img src="{% static 'img/verificated.png' %}" class="img-verified">
+                                <button class="subscribe_user">Подписаться</button>
                             {% else %}
                             <img src="{{post.author.image.url|default:'graffgram\media\users_avatars\default_avatar.jpg'}}" alt="user-avatar" class="user__avatar">
                             <span class="username">{{post.author}}</span>
+                            <button class="subscribe_user">Подписаться</button>
                             {% endif %}
                         </div>
                     </div>    

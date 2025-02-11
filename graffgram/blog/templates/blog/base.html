@@ -23,7 +23,7 @@
                         <li><a href="/" class="navbar-item">Главная</a></li>
                         <li><a href="#" class="navbar-item">Сообщения</a></li>
                         {% if user.is_authenticated %}
-                            <li><a href="{% url "users:profile_user pk=pk" %}" class="navbar-item">Профиль</a></li>
+                            <li><a href="{% url "users:profile_user " %}" class="navbar-item">Профиль</a></li>
                         {% else %}
                             <li><a href="{% url "users:login" %}" class="navbar-item">Войти</a></li>
                         {% endif %}

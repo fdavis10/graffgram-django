@@ -226,3 +226,25 @@ ion-icon {
 .comment-submit-btn:hover {
     background: #0056b3;
 }
+
+.subscribe_user{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 97px;
+    height: 25px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0.5em 2em;
+    border: transparent;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    background: dodgerblue;
+    color: white;
+    border-radius: 15px;
+}
+
+.subscribe_user:hover {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(30,144,255,1) 0%, rgba(0,212,255,1) 100%);
+}
+   
