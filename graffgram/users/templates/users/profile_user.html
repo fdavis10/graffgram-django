@@ -8,4 +8,107 @@
 {% block title %}Профиль пользователя{% endblock title %}
 
 {% block content %}
+<div class="profile-container">
+    <div class="main-block">
+        <div class="user-info">
+            <img src="{{ user.image.url|default:'graffgram/media/users_avatars/default_avatar.jpg' }}" alt="User Avatar" class="user-avatar">
+            <div class="user-details">
+                {% if user.is_verified %}
+                <h2 class="username">{{ user.username }}</h2><img src="{% static 'img/verificated.png' %}" class="img-verified-profile">
+                {% else %}
+                <h2 class="username">{{ user.username }}</h2>
+                {% endif %}
+            </div>
+            <div class="user-data">
+                <p>Друзья: </p>
+                <p>Постов: {{ post_count }}</p>
+            </div>
+        </div>
+        <div class="action-buttons">
+            <a href="" class="btn">Запросы в друзья</a>
+            <a href="{% url 'users:edit_profile' %}" class="btn">Редактировать профиль</a>
+        </div>
+    </div>
+    <div class="secondary-blocks">
+        <div class="communities">
+            <h3>Сообщества</h3>
+            <p>В разработке...</p>
+        </div>
+        <div class="friends">
+            <h3>Друзья</h3>
+            <ul>
+                {% for friend in user.friends.all|slice:":5" %}
+                <li>
+                    <a href="{% url 'users:profile_user' friend.id %}">
+                        <img src="" alt="" class="friend-avatar">
+                        <span></span>
+                    </a>
+                </li>
+                {% empty %}
+                <p>Друзей пока нет</p>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="posts">
+        <h3 class="my_posts">Посты</h3>
+        <div class="posts-wrapper">
+            {% for post in posts %}
+                <div class="post_card">
+                    <div class="post_header">
+                        {% if post.status == "Жива" %}
+                            <div class="status_image_live">{{post.status|upper}}</div>
+                        {% else %}
+                            <div class="status_image_buff">{{post.status|upper}}</div>
+                        {% endif %}
+                        <div class="user_avatar">
+                            {% if post.author.is_verified %}
+                                <img src="{{post.author.image.url|default:'graffgram\media\users_avatars\default_avatar.jpg'}}" alt="user-avatar" class="user__avatar">
+                                <span class="username">{{post.author}}</span>
+                                <img src="{% static 'img/verificated.png' %}" class="img-verified">
+                                <button class="subscribe_user">Подписаться</button>
+                            {% else %}
+                            <img src="{{post.author.image.url|default:'graffgram\media\users_avatars\default_avatar.jpg'}}" alt="user-avatar" class="user__avatar">
+                            <span class="username">{{post.author}}</span>
+                            <button class="subscribe_user">Подписаться</button>
+                            {% endif %}
+                        </div>
+                    </div>    
+                    <div class="post_content">
+                        <a href="{{post.get_absolute_url}}">
+                            <img src="{{post.image.url}}" alt="post-image">
+                        </a>
+                        <div class="post_description">
+                            <span class="post_description_span">{{post.description|truncatechars:50}}</span>
+                        </div>
+                    </div>
+                    <div class="post_footer">
+                        <form action="{% url 'blog:like_post' post_id=post.id %}" method="post">
+                            {% csrf_token %}
+                            <button class="like-btn" id="like-btn-{{ post.id }}" data-post-id="{{ post.id }}">
+                                <ion-icon name="heart" class="{% if user in post.likes.all %}liked{% else %}unliked{% endif %}"></ion-icon>
+                            </button>
+                        </form>
+                        <span id="like-count-{{ post.id }}" class="count_likes">{{ post.likes.count }}</span>
+                        <div class="comment">
+                            <ion-icon name="chatbubble-outline"></ion-icon>
+                        </div>
+                        <div class="comment_section">
+                            <form action="{% url 'blog:add_comment' post_id=post.id %}" class="comment-form" method="post">
+                                {% csrf_token %}
+                                <div class="comment-box">
+                                    <img src="{{ user.image.url }}" alt="avatar" class="comment-avatar">
+                                    <textarea name="content" class="comment-input" placeholder="Комментарий здесь!"></textarea>
+                                    <button type="submit" class="comment-submit-btn">Отправить</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+            <p>Постов пока нет</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock content %}

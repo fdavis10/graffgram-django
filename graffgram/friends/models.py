@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 
 class FriendShip(models.Model):
 
@@ -9,8 +10,8 @@ class FriendShip(models.Model):
         ('declined', 'Отклонено'),
     )
 
-    from_user = models.ForeignKey(User, related_name='friendship_created', on_delete=models.CASCADE)
-    to_user = models.ForeignKey(User, related_name='friendship_received', on_delete=models.CASCADE)
+    from_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='friendship_created', on_delete=models.CASCADE)
+    to_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='friendship_received', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=20, choices=STATUS_FRIEND, default='pending')
 

@@ -1,0 +1,367 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+.main-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.055);
+    box-shadow: 0px 5px 8px rgba(34, 60, 80, 0.2);
+    border-radius: 15px;
+    width: 80%;
+    padding: 20px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.user-details {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
+
+.action-buttons {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 15px;
+    background-color: dodgerblue;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.secondary-blocks {
+    display: flex;
+    gap: 20px;
+    width: 80%;
+    justify-content: space-around;
+}
+
+.communities, .friends {
+    background-color: rgba(0, 0, 0, 0.055);
+    box-shadow: 0px 5px 8px rgba(34, 60, 80, 0.2);
+    border-radius: 15px;
+    padding: 15px;
+    width: 45%;
+    text-align: center;
+}
+
+.friends ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.friends li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.friend-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.post__wrapper__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    gap: 50px;
+}
+
+.post_card{
+    background-color: rgba(0, 0, 0, 0.055);
+    box-shadow: 0px 5px 8px 0px rgba(34, 60, 80, 0.2);
+    width: 600px;
+    height: 650px;
+    max-height: 700px;
+    border-radius: 15px;
+    align-items: flex-start;
+}
+
+.post_card:last-child{
+    margin-bottom: 100px;
+}
+
+
+.post_header{
+    display: flex;
+    margin-left: 20px;
+    margin-top: 30px;
+    padding-top: 20px;
+    max-height: 70px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status_image_live{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: 2;
+    font-size: 13px;
+    font-weight: bold;
+    margin-right: 20px;
+    width: 60px;
+    height: 40px;
+    color: whitesmoke;
+    background-color: #2bc25894;
+    border-radius: 25px;
+    box-shadow: 0px 5px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.status_image_buff{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: 2;
+    font-size: 13px;
+    font-weight: bold;
+    margin-right: 20px;
+    width: 60px;
+    height: 40px;
+    color: whitesmoke;
+    background-color: #c22b2bb0;
+    border-radius: 25px;
+    box-shadow: 0px 5px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.user__avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255,255,255,0.13); 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.img-verified {
+    width: 15px;
+    height: 15px;
+    margin-left: -5px; 
+    position: relative;
+    z-index: 2; 
+}
+
+.user_avatar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.post_content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px;
+
+}
+
+.post_content img, .post_content a {
+    width: 100%;         
+    height: auto;        
+    max-height: 400px;   
+    object-fit: cover;   
+    background-color: black;
+}
+
+.post_description {
+    margin-top: 10px;
+    width: 90%;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.281);
+    color: #333;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.post_description_span{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.post_footer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    margin-left: 20px;
+}
+
+
+
+.count_likes {
+    font-size: 14px;
+    color: #333;
+    margin-top: 10px; 
+    font-weight: bold;
+    text-align: center;
+}
+
+.like-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font-size: 24px;
+    transition: transform 0.2s ease-in-out;
+    margin-top: 3px;
+}
+
+.like-btn:active {
+    transform: scale(1.2);
+}
+
+ion-icon {
+    font-size: 32px;
+    color: black;
+    transition: color 0.3s ease-in-out;
+}
+
+
+.liked {
+    color: red;
+    fill: red;
+}
+
+
+.unliked {
+    color: black;
+    fill: none;
+}
+
+.comment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px; 
+}
+
+.comment_section {
+    margin-top: 15px;
+}
+
+.comment-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f9f9f9;
+    border-radius: 25px;
+    padding: 10px;
+    width: 125%;
+    justify-content: center;
+}
+
+.comment-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+.comment-input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 14px;
+    padding: 5px;
+    resize: none;
+    text-align: center;
+}
+
+.comment-submit-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.comment-submit-btn:hover {
+    background: #0056b3;
+}
+
+.subscribe_user{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 97px;
+    height: 25px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0.5em 2em;
+    border: transparent;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    background: dodgerblue;
+    color: white;
+    border-radius: 15px;
+}
+
+.subscribe_user:hover {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(30,144,255,1) 0%, rgba(0,212,255,1) 100%);
+}
+
+.img-verified-profile{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    margin-left: 5px;
+    position: relative;
+    top: 5px;
+}
+
+.user-data{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.my_posts{
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+}

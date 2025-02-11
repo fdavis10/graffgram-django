@@ -65,15 +65,11 @@ def edit_profile(request):
 
 
 @login_required
-def profile_user(request, pk=None):
+def profile_user(request):
     user = request.user
     posts = Post.objects.filter(author=user)
     post_count = posts.count()
     total_likes = sum(post.likes.count() for post in posts)
-    if pk:
-        user = get_object_or_404(User, pk)
-    else:
-        user = request.user
     return render(request, 'users/profile_user.html', {"posts": posts, "post_count": post_count, "total_likes": total_likes})
         
 
